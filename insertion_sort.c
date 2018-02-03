@@ -1,15 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
-
-void shuffle(int keys[], int from, int to) {
-    int inserting = keys[from];
-    while(from >= to) {
-	int moving = keys[to];
-	keys[to] = inserting;
-	inserting = moving;
-	to++;
-    }
-}
+#include "insertion_sort.h"
 
 void printArr(int keys[], int size) {
     for (int i = 0; i < size; i++) 
@@ -26,13 +17,13 @@ void insertion_sort(int keys[], int size) {
 	int targetPosition = -1;
         for (int considering = 0; considering <= position; considering++) {
             if (keys[position] < keys[considering]) {
-		targetPosition = considering;
-		break;
-	    }
+                targetPosition = considering;
+                break;
+            }
         }
-	if (targetPosition > -1) {
-	    shuffle(keys, position, targetPosition);
-	}
+        if (targetPosition > -1) {
+            shuffle(keys, position, targetPosition);
+        }
     }
 }
 
@@ -42,7 +33,5 @@ int main() {
 
     insertion_sort(keys, size);
 
-    printf("-----------------------------\n");
-    printf("results: \n");
     printArr(keys, size);
 }
