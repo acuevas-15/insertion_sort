@@ -14,15 +14,11 @@
  */
 #define INSERTION_SORT(keys, size) do { \
     for (int position = 1; position < size; position++) { \
-        int targetPosition = -1; \
         for (int considering = 0; considering <= position; considering++) { \
             if (keys[position] < keys[considering]) { \
-                targetPosition = considering; \
+                SHUFFLE(keys, position, considering);    \
                 break; \
             } \
-        } \
-        if (targetPosition > -1) { \
-            SHUFFLE(keys, position, targetPosition); \
         } \
     } \
 } while(0)
